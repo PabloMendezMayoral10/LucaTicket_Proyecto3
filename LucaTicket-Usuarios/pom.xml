@@ -16,6 +16,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
 		<spring-boot-admin.version>2.7.4</spring-boot-admin.version>
+		<org.springdoc-version>1.6.4</org.springdoc-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,6 +27,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- Dependencia para Documentación API REST-->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${org.springdoc-version}</version>
 		</dependency>
 		<!-- Conector de MySql que conecta con Spring Data JPA-->
 		<dependency>

@@ -13,4 +13,5 @@ import com.lucaticket.usuarios.model.Usuario;
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
+
 }

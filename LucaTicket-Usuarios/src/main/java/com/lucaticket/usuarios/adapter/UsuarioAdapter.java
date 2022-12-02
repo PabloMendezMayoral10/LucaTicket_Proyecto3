@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-
-import com.lucaticket.usuarios.dto.UsuarioDTO;
+import com.lucaticket.response.UsuarioResponse;
 import com.lucaticket.usuarios.model.Usuario;
 
 /**
  * 
  * @author Ioan Stirbu
  * @version 1.0
- * @apiNote Esta clase se encarga de convertir un Usuario en UsuarioDTO
+ * @apiNote Esta clase se encarga de convertir un Usuario en UsuarioResponse que trabaja de DTO   
+ * y no UsuarioDTO
  *
  */
 
@@ -25,8 +25,8 @@ public class UsuarioAdapter {
 	 * @return Devuelve el usuario transformado en DTO
 	 */
 
-	public UsuarioDTO of(Usuario u) {
-		UsuarioDTO dto = new UsuarioDTO();
+	public UsuarioResponse of(Usuario u) {
+		UsuarioResponse dto = new UsuarioResponse();
 
 		dto.setUsername(u.getUsername());
 		dto.setPassword(u.getPassword());
@@ -41,8 +41,8 @@ public class UsuarioAdapter {
 	 * @return Devuelve una lista de UsuarioDTO a partir de una lista de usuarios
 	 */
 
-	public List<UsuarioDTO> of(List<Usuario> usuarios) {
-		ArrayList<UsuarioDTO> todos = new ArrayList<UsuarioDTO>();
+	public List<UsuarioResponse> of(List<Usuario> usuarios) {
+		ArrayList<UsuarioResponse> todos = new ArrayList<UsuarioResponse>();
 
 		for (Usuario u : usuarios) {
 			todos.add(of(u));
