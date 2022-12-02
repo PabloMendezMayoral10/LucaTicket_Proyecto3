@@ -1,5 +1,6 @@
 package com.lucaticket.usuarios.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
@@ -9,7 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @NoArgsConstructor
-public class UsuarioDTO {
+public class UsuarioDTO implements Serializable{
 
 	private int id;
 	private String username, password, email;
