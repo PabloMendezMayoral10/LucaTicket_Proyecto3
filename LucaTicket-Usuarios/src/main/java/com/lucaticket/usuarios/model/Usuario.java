@@ -9,13 +9,25 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 
+ * @author Ioan Stirbu
+ * @version 1.0 date: 02/12/2022
+ *
+ * @apiNote Clase Usuario, con sus respectivos atributos
+ */
+
 @Entity
 @Table(name = "usuarios")
-@Setter @Getter
+@Setter
+@Getter
 public class Usuario {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String username, password,email;
-	//private List<Evento> eventos;
+	private String username, password, email;
+	// private List<Evento> eventos;
+
+
 }
