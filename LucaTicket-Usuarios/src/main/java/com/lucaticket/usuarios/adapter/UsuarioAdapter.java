@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.model.Usuario;
 
 /**
@@ -29,7 +30,7 @@ public class UsuarioAdapter {
 
 		dto.setUsername(u.getUsername());
 		dto.setPassword(u.getPassword());
-		dto.setVideojuegos(u.getVideojuegos());
+		dto.setEmail(u.getEmail());
 
 		return dto;
 	}
