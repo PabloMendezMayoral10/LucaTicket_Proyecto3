@@ -1,5 +1,7 @@
 package com.lucaticket.usuarios.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,10 @@ public class UsuarioService {
 		
 		return ur.save(ua.of(u));
 		
+	}
+	
+	public List<UsuarioDTO> findAll(){
+		UsuarioAdapter ua = new UsuarioAdapter();
+		return ua.of(ur.findAll());
 	}
 }
