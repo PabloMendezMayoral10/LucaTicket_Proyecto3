@@ -26,6 +26,11 @@ public class UsuarioService {
 		
 	}
 	
+	/**
+	 * @author Martin
+	 * @return Lista de todos los usuarios
+	 * 02-12-2022
+	 */
 	public List<UsuarioDTO> findAll(){
 		UsuarioAdapter ua = new UsuarioAdapter();
 		return ua.of(ur.findAll());
