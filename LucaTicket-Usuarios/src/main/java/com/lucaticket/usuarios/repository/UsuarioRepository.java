@@ -12,5 +12,5 @@ import com.lucaticket.usuarios.model.Usuario;
  * 02-12-2022
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-
+	
 }
