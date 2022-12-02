@@ -16,6 +16,6 @@ public class Usuario {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String username, password,email;
+	private String username, password, email;
 	//private List<Evento> eventos;
 }
