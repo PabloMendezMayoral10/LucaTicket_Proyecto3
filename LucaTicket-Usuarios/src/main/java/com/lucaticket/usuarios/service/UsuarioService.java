@@ -5,10 +5,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lucaticket.response.UsuarioResponse;
 import com.lucaticket.usuarios.adapter.UsuarioAdapter;
 import com.lucaticket.usuarios.model.Usuario;
 import com.lucaticket.usuarios.repository.UsuarioRepository;
+import com.lucaticket.usuarios.response.UsuarioResponse;
 /**
  * 
  * @author Pedro

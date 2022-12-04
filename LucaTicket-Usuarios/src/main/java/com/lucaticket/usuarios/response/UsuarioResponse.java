@@ -1,4 +1,4 @@
-package com.lucaticket.response;
+package com.lucaticket.usuarios.response;
 
 import java.io.Serializable;
 import lombok.Getter;
