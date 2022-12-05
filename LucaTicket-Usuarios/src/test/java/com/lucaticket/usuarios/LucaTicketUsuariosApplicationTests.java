@@ -51,7 +51,9 @@ class LucaTicketUsuariosApplicationTests {
 	void testUsuarioAltaExiste() {
 		//UsuarioDTO u = new UsuarioDTO();
 		List<Usuario> usuarios = repo.findAll();
+
 		usuarios.add(new Usuario(2, "Pablo", "Mendez", "12345", "hola@gmail", new Date(05,12,2022)));
+
 		
 		List<UsuarioDTO> usdto = adapter.of(usuarios);
 		
@@ -61,7 +63,9 @@ class LucaTicketUsuariosApplicationTests {
 			}
 		}
 		
+		
 	}
+
 
 	@Test
 	void testUsuarioAltaSuNombre() {
@@ -72,4 +76,5 @@ class LucaTicketUsuariosApplicationTests {
 		
 		assertThat(usdto).isEqualTo(usuarios);
 	}
+
 }
