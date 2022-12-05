@@ -60,7 +60,15 @@ class LucaTicketUsuariosApplicationTests {
 			}
 		}
 		
-		
 	}
 
+	@Test
+	void testUsuarioAltaSuNombre() {
+		List<Usuario> usuarios = repo.findAll();
+		usuarios.add(new Usuario(2,"Prueba", "12345", "hola@gmail"));
+		
+		List<UsuarioDTO> usdto = adapter.of(usuarios);
+		
+		assertThat(usdto).isEqualTo(usuarios);
+	}
 }
