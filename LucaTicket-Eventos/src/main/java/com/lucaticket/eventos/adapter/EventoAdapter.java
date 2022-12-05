@@ -3,6 +3,8 @@ package com.lucaticket.eventos.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 /**
@@ -11,8 +13,9 @@ import com.lucaticket.eventos.model.Evento;
  * Clase que transforma eventos en DTOs de eventos
  * 02-12-2022
  */
+@Component
 public class EventoAdapter {
-	public EventoDTO convertToDTO(Evento e) {
+	public EventoDTO of(Evento e) {
 		if(e==null) return null;
 		EventoDTO r = new EventoDTO();
         r.setId(e.getId());
@@ -31,10 +34,10 @@ public class EventoAdapter {
         return r;
 	}
 	
-	public List<EventoDTO> convertToDTO(List<Evento> eventos) {
+	public List<EventoDTO> of(List<Evento> eventos) {
 		ArrayList<EventoDTO> todos = new ArrayList<EventoDTO>();
     	for(Evento e : eventos) {
-    		todos.add( convertToDTO(e) );
+    		todos.add( of(e) );
     	}
     	return todos;
 	}

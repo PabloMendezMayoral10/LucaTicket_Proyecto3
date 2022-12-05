@@ -22,7 +22,7 @@ public class EventoService {
 	 * 02-12-2022
 	 */
 	public EventoDTO save(Evento e) {
-		return (new EventoAdapter()).convertToDTO( repo.save(e) );
+		return (new EventoAdapter()).of( repo.save(e) );
 	}
 	
 	/**
@@ -32,6 +32,6 @@ public class EventoService {
 	 * 02-12-2022
 	 */
 	public List<EventoDTO> findAll(){
-		return (new EventoAdapter()).convertToDTO( repo.findAll() );
+		return (new EventoAdapter()).of( repo.findAll() );
 	}
 }
