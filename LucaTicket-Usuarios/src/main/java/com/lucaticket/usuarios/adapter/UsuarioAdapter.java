@@ -27,12 +27,15 @@ public class UsuarioAdapter {
 
 	public UsuarioDTO of(Usuario u) {
 		UsuarioDTO dto = new UsuarioDTO();
-
+		
+		dto.setId(u.getId());
 		dto.setNombre(u.getNombre());
-		dto.setPassword(u.getPassword());
+		dto.setApellido(u.getApellido());
 		dto.setEmail(u.getEmail());
-		dto.setApellidos(u.getApellidos());
-		dto.setFechaalta(u.getFechaalta());
+		dto.setPassword(u.getPassword());
+		
+		
+		//dto.setFechaalta(u.getFechaalta());
 
 		return dto;
 	}
@@ -51,5 +54,5 @@ public class UsuarioAdapter {
 		}
 		return todos;
 	}
-
+	
 }

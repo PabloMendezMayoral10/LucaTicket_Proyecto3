@@ -22,7 +22,7 @@ import lombok.ToString;
 @Document(collection = "Eventos")
 public class Evento {
 	@Id
-	private int id;
+	private String id;
 	@Field("nombre")
 	private String nombre;
 	@Field("descripcioncorta")
