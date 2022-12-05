@@ -1,17 +1,20 @@
 package com.lucaticket.usuarios.dto;
 
-import java.io.Serializable;
-import java.sql.Date;
 
+
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @NoArgsConstructor
-public class UsuarioDTO implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Getter @Setter @NoArgsConstructor @ToString @EqualsAndHashCode
+public class UsuarioDTO{
 	private int id;
-	private String nombre, apellidos, password, email;
-	private Date fechaalta;
+	private String nombre;
+	private String apellido; 
+	private String email;
+	private String password;
+	//private Date fechaalta;
 	//private List<Evento> eventos;
 }

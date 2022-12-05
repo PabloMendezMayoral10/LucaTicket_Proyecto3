@@ -3,7 +3,7 @@ package com.lucaticket.usuarios;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
@@ -52,7 +52,7 @@ class LucaTicketUsuariosApplicationTests {
 		//UsuarioDTO u = new UsuarioDTO();
 		List<Usuario> usuarios = repo.findAll();
 
-		usuarios.add(new Usuario(2, "Pablo", "Mendez", "12345", "hola@gmail", new Date(05,12,2022)));
+		usuarios.add(new Usuario(2, "Pablo", "Mendez", "12345", "hola@gmail"));
 
 		
 		List<UsuarioDTO> usdto = adapter.of(usuarios);
@@ -70,7 +70,7 @@ class LucaTicketUsuariosApplicationTests {
 	@Test
 	void testUsuarioAltaSuNombre() {
 		List<Usuario> usuarios = repo.findAll();
-		usuarios.add(new Usuario(3, "Ioan", "Stirbu", "12345", "adios@gmail", new Date(11,07,2010)));
+		usuarios.add(new Usuario(3, "Ioan", "Stirbu", "12345", "adios@gmail"));
 		
 		List<UsuarioDTO> usdto = adapter.of(usuarios);
 		

@@ -2,7 +2,6 @@ package com.lucaticket.eventos;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,6 @@ class LucaTicketEventosApplicationTests {
 	@Autowired
 	private EventoAdapter adapter;
 	
-	//Comprobar que después de hacer el alta el evento existe
 	
 	/**
 	 * LucaTicketEventossApplicationTests
@@ -50,7 +48,12 @@ class LucaTicketEventosApplicationTests {
 		
 	}
 	
-	
+	/**
+	 * LucaTicketEventossApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 05-12-2022
+	 */
 	@Test
 	void testEventoAltaSuNombre() {
 		List<Evento> eventos = repository.findAll();
