@@ -36,14 +36,14 @@ class LucaTicketEventosApplicationTests {
 	@Test
 	void testAltaEventoExiste() {
 		List<Evento> eventos = repository.findAll();
-		eventos.add(new Evento(2,"pepe", "senior mayor","un senior muy mayor",
+		eventos.add(new Evento("2","pepe", "senior mayor","un senior muy mayor",
 				"C:\\Desktop",20,300,"No molestar a la gente", "Pepeland",
 				"Madrid","Avenida Pepelandia", "demasiado grande", 6000));
 		
 		List<EventoDTO> edto = adapter.convertToDTO(eventos);
 		
 		for(EventoDTO events : edto) {
-			if(events.getId() == 2) {
+			if(events.getId() == "2") {
 				assertThat(edto).isNotNull();
 			}
 		}
@@ -54,7 +54,7 @@ class LucaTicketEventosApplicationTests {
 	@Test
 	void testEventoAltaSuNombre() {
 		List<Evento> eventos = repository.findAll();
-		eventos.add(new Evento(3,"paco", "ninio","un chaval muy joven",
+		eventos.add(new Evento("3","paco", "ninio","un chaval muy joven",
 				"C:\\Documents",50,800,"Molestar a todos", "Nanoland",
 				"Madrid","Avenida Nanoland", "demasiado pequenio", 2000));
 		
