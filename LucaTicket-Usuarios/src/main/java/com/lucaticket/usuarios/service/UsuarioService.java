@@ -19,11 +19,8 @@ public class UsuarioService {
 	private UsuarioRepository ur;
 	
 	public UsuarioDTO save(Usuario u) {
-		
 		UsuarioAdapter ua = new UsuarioAdapter();
-		
-		return ur.save(ua.of(u));
-		
+		return ua.of(ur.save(u));
 	}
 	
 	/**
