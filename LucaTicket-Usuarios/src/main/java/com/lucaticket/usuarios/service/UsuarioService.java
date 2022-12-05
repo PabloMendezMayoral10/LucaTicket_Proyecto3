@@ -18,12 +18,9 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository ur;
 	
-	public void save(Usuario u) {
-		
+	public UsuarioDTO save(Usuario u) {
 		UsuarioAdapter ua = new UsuarioAdapter();
-		
-		save(ua.of(u));
-		
+		return ua.of(ur.save(u));
 	}
 	
 	/**
