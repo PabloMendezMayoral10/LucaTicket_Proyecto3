@@ -28,9 +28,11 @@ public class UsuarioAdapter {
 	public UsuarioDTO of(Usuario u) {
 		UsuarioDTO dto = new UsuarioDTO();
 
-		dto.setUsername(u.getUsername());
+		dto.setNombre(u.getNombre());
 		dto.setPassword(u.getPassword());
 		dto.setEmail(u.getEmail());
+		dto.setApellidos(u.getApellidos());
+		dto.setFechaalta(u.getFechaalta());
 
 		return dto;
 	}
