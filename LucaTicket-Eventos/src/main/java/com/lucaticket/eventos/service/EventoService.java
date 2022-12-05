@@ -1,5 +1,7 @@
 package com.lucaticket.eventos.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class EventoService {
 	@Autowired
 	EventoRepository repo;
 	/**
-	 * EventoDTO
+	 * save
 	 * @param evento que se quiere guardar
 	 * @return el evento que se ha guardado, en forma de DTO
 	 * @author Martin
@@ -21,5 +23,15 @@ public class EventoService {
 	 */
 	public EventoDTO save(Evento e) {
 		return (new EventoAdapter()).convertToDTO( repo.save(e) );
+	}
+	
+	/**
+	 * findAll
+	 * @return todos los eventos, en forma de DTO
+	 * @author Martin
+	 * 02-12-2022
+	 */
+	public List<EventoDTO> findAll(){
+		return (new EventoAdapter()).convertToDTO( repo.findAll() );
 	}
 }
