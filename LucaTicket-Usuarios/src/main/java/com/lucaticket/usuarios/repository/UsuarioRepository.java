@@ -2,6 +2,7 @@ package com.lucaticket.usuarios.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.model.Usuario;
 
 /**

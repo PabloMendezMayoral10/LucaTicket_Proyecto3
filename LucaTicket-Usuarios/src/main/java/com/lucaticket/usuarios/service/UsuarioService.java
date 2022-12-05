@@ -16,11 +16,11 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository ur;
 	
-	public UsuarioDTO save(Usuario u) {
+	public void save(Usuario u) {
 		
 		UsuarioAdapter ua = new UsuarioAdapter();
 		
-		return ur.save(ua.of(u));
+		save(ua.of(u));
 		
 	}
 }
