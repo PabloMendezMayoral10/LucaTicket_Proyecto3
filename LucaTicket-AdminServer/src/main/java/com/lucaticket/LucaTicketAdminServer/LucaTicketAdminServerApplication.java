@@ -8,8 +8,8 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 /**
  * @author Pedro Pusso Muro
  * @version 1.0
+ * @since 02/12/2022
  * Nombre: LucaTicketAdminServerApplication
- * Fecha: 02/12/2022
  * Descripción:
  */
 

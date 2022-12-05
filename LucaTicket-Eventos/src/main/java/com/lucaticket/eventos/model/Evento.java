@@ -19,7 +19,7 @@ import lombok.ToString;
  */
 
 @Setter @Getter @ToString @NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode
-@Document(collection = "Usuarios")
+@Document(collection = "Eventos")
 public class Evento {
 	@Id
 	private int id;
