@@ -51,6 +51,7 @@ class LucaTicketEventosApplicationTests {
 	}
 	
 	
+
 	@Test
 	void testEventoAltaSuNombre() {
 		List<Evento> eventos = repository.findAll();
@@ -64,4 +65,5 @@ class LucaTicketEventosApplicationTests {
 	}
 	
 	
+
 }
