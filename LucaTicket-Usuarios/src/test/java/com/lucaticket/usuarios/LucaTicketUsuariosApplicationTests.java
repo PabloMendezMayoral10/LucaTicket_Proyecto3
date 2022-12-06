@@ -3,8 +3,6 @@ package com.lucaticket.usuarios;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -53,7 +51,7 @@ class LucaTicketUsuariosApplicationTests {
 	
 	@Test
 	void testUsuarioAltaExiste() {
-		//UsuarioDTO u = new UsuarioDTO();
+		
 		List<Usuario> usuarios = repo.findAll();
 
 		usuarios.add(new Usuario(2, "Pablo", "Mendez", "12345", "hola@gmail"));
@@ -86,5 +84,57 @@ class LucaTicketUsuariosApplicationTests {
 		
 		assertThat(usdto).isEqualTo(u.getNombre());
 	}
+	
+	
+	/**
+	 * LucaTicketUsuariosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testListaNoVacia() {
+		List<Usuario> usuarios = repo.findAll();
+		
+		assertThat(usuarios).isNotNull();
+		
+	}
+	
+	/**
+	 * LucaTicketUsuariosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testUsuarioExistenteLista() {
+		Usuario usuario = new Usuario();
+		controller.save(usuario);
+		
+		List<Usuario> lista_usuarios = repo.findAll();
+		List<UsuarioDTO> usudto = adapter.of(lista_usuarios);
+		
+		UsuarioDTO userdto = adapter.of(usuario);
+		
+		assertThat(usudto).contains(userdto);
+		
+		
+	}
+	
+	/**
+	 * LucaTicketUsuariosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	
+	void testUsuarioListaNoNulo() {
+		List<Usuario> lista_usuarios = repo.findAll();
+		
+		for(Usuario us: lista_usuarios)
+			assertThat(us).isNotNull();
+	}
+	
+	
 
 }

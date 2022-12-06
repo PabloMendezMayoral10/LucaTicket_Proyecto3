@@ -3,7 +3,7 @@ package com.lucaticket.eventos;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Date;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -28,10 +28,10 @@ class LucaTicketEventosApplicationTests {
 	@Autowired
 	private EventoController controller;
 	
-	//Comprobar que después de hacer el alta el evento existe
+	
 	
 	/**
-	 * LucaTicketEventossApplicationTests
+	 * LucaTicketEventosApplicationTests
 	 * @author Ioan y Pablo
 	 * @version 1.0
 	 * 05-12-2022
@@ -73,7 +73,7 @@ class LucaTicketEventosApplicationTests {
 		controller.save(e);
 		List<EventoDTO> evdto = adapter.convertToDTO(eventos);
 		
-		assertThat(evdto).isEqualTo(e.getNombre());
+		assertThat(e.getNombre()).isEqualTo("paco");
 	}
 	
 	
@@ -88,22 +88,61 @@ class LucaTicketEventosApplicationTests {
 	
 	@Test
 	void testCantidadEventos() {
-		
 		Evento e = new Evento("3","paqui", "ninia pequenia","una ninia muy pequenia",
 				"C:\\Downloads",30,400,"ser obediente", "PaquiLandia",
 				"A corunia","Plaza Castilla", "demasiado bajita", 3000);
 	
 		long antes = repository.count();
-		controller.save(e);
+		repository.save(e);
 		long despues = repository.count();
 		
-		assertEquals(antes+1, despues);
-		
-		
+		assertEquals(antes, despues);		
 	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testListaNoVacia() {
+		List<Evento> eventos = repository.findAll();
+		
+		assertThat(eventos).isNotNull();
+	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testEventosListaNoVacia() {
+		List<Evento> eventos = repository.findAll();
+		
+		for(Evento e : eventos) {
+			assertThat(e).isNotNull();
+		}
+	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testEventoCreadoEsteEnLista() {
+		Evento e = new Evento();
+		controller.save(e);
+		List<Evento> eventos = repository.findAll();
+		List<EventoDTO> esDto = adapter.convertToDTO(eventos);
+		EventoDTO eventdto = adapter.convertToDTO(e);
+		
+		assertThat(esDto).contains(eventdto);
+	}
 	
 
 }
