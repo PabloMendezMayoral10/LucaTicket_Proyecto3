@@ -49,7 +49,7 @@ public class EventoController {
 	public ResponseEntity<List<EventoDTO>> findAll(){
 		List<EventoDTO> lista = service.findAll();
 		if(lista.isEmpty()) return  ResponseEntity.noContent().build();
-		return ResponseEntity.ok(service.findAll());
+		return ResponseEntity.ok(lista);
 	}
 	
 
