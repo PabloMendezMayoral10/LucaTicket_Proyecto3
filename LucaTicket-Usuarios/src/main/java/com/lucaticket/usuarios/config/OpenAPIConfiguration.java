@@ -26,7 +26,7 @@ public class OpenAPIConfiguration {
 	@Bean
 	public OpenAPI UsuarioOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("API")
+				.info(new Info().title("UsuariosAPI")
 				.description("Documentacion de Usuarios API")		
 				.version("v1.0")
 				.contact(new Contact().name("Proyecto3").
