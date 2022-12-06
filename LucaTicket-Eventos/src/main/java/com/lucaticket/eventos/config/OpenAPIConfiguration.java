@@ -16,7 +16,7 @@ public class OpenAPIConfiguration {
 	@Bean
 	public OpenAPI EventoOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("API")
+				.info(new Info().title("EventosAPI")
 				.description("Documentacion de Eventos API")		
 				.version("v1.0")
 				.contact(new Contact().name("Proyecto3").

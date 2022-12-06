@@ -13,6 +13,13 @@ import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.model.Usuario;
 import com.lucaticket.usuarios.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 //import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.net.URI;
@@ -23,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping("/usuarios")
-//@Tag(name = "Usuario", description = "User API")
+@Tag(name = "Usuario", description = "Usuario API")
 /**
  * @author Álvaro Blanco
  * @apiNote Clase UsuarioController que se encarga de controlar las respuestas
@@ -35,10 +42,12 @@ public class UsuarioController {
 	private UsuarioService service;
 	
 
-	/**
-	 * @param Álvaro Blanco
-	 * @return guarda un nuevo usuario
-	 */
+	@Operation(summary = "Insertar un nuevo usuario", description = "Inserta y devuelve el usuario que se ha añadido previamente", tags = {
+	"usuario" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Insertar usuario", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
 	@PostMapping("/guardar")
 	public UsuarioDTO save(@RequestBody Usuario usu) {
@@ -53,10 +62,13 @@ public class UsuarioController {
 		return res;
 	}
 	
+	@Operation(summary = "Listar todos los usuarios", description = "Devuelve el resultado de ejecucion de la lista de usuarios", tags = {
+	"usuario" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Usuarios mostrados", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	
-	/**
-	 * debo documentar openapi y no tengo la menor idea
-	 */
 	@GetMapping()
 	public ResponseEntity<Collection<UsuarioDTO>> findAll(){
 		return ResponseEntity.ok( service.findAll() );
