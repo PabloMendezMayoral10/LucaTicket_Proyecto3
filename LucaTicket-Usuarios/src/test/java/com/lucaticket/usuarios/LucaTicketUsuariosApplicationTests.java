@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lucaticket.usuarios.model.Usuario;
 import com.lucaticket.usuarios.adapter.UsuarioAdapter;
+import com.lucaticket.usuarios.controller.UsuarioController;
 import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.repository.UsuarioRepository;
 
@@ -30,6 +31,9 @@ class LucaTicketUsuariosApplicationTests {
 	
 	@Autowired
 	private UsuarioAdapter adapter;
+	
+	@Autowired
+	private UsuarioController controller;
 
 	@Test
 	void testAltaCantidadAumenta() { //TODO
@@ -65,16 +69,22 @@ class LucaTicketUsuariosApplicationTests {
 		
 		
 	}
-
+	/**
+	 * LucaTicketUsuariosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
 
 	@Test
 	void testUsuarioAltaSuNombre() {
 		List<Usuario> usuarios = repo.findAll();
-		usuarios.add(new Usuario(3, "Ioan", "Stirbu", "12345", "adios@gmail"));
-		
+		Usuario u = new Usuario(3, "Ioan", "Stirbu", "12345", "adios@gmail");
+		usuarios.add(u);
+		controller.save(u);
 		List<UsuarioDTO> usdto = adapter.of(usuarios);
 		
-		assertThat(usdto).isEqualTo(usuarios);
+		assertThat(usdto).isEqualTo(u.getNombre());
 	}
 
 }
