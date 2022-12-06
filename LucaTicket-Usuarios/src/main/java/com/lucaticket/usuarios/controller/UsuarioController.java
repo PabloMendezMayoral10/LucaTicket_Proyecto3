@@ -41,12 +41,16 @@ public class UsuarioController {
 	 */
 
 	@PostMapping("/guardar")
-	public ResponseEntity<?> save(@RequestBody Usuario usuario) {
-		log.info("--- save an user ---");
-		UsuarioDTO resultado = this.service.save(usuario);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId())
-				.toUri();
-		return ResponseEntity.created(location).build();
+	public UsuarioDTO save(@RequestBody Usuario usu) {
+		//	log.info("--- save an user ---");
+		//	UsuarioDTO resultado = this.service.save(usuario);
+		//	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
+		//	return ResponseEntity.created(location).build();
+		
+		// Actualizado pare enviar un mensaje 201:
+		UsuarioDTO res = service.save(usu);
+		
+		return res;
 	}
 	
 	
