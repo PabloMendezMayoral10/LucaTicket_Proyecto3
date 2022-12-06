@@ -9,7 +9,8 @@ import io.swagger.v3.oas.models.info.License;
 
 /**
  * 
- * @author Ioan Stirbu
+ * @author Pedro Pusso
+ * @since 06/12/2022
  *
  */
 
@@ -24,16 +25,16 @@ public class OpenAPIConfiguration {
 	 */
 
 	@Bean
-	public OpenAPI UsuarioOpenAPI() {
+	public OpenAPI CompraOpenAPI() {
 		return new OpenAPI()
 				.info(new Info().title("API")
-				.description("Documentacion de Usuarios API")		
+				.description("Documentacion de Compras API")		
 				.version("v1.0")
 				.contact(new Contact().name("Proyecto3").
 						url("https://proyecto3.es").email("proyecto3@final.es"))
 				.license(new License().name("Licencia de Pago").url("http://springdoc.org")))
 				.externalDocs(new ExternalDocumentation()
-				.description("Descripcion del proyecto Usuarios")
+				.description("Descripcion del proyecto Compras")
 				.url("https://nuestroproyecto3.es"));
 						
 	}
