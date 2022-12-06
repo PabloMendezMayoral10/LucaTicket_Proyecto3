@@ -1,6 +1,7 @@
 package com.lucaticket.eventos;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lucaticket.eventos.adapter.EventoAdapter;
+import com.lucaticket.eventos.controller.EventoController;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.repository.EventoRepository;
@@ -23,6 +25,8 @@ class LucaTicketEventosApplicationTests {
 	private EventoRepository repository;
 	@Autowired
 	private EventoAdapter adapter;
+	@Autowired
+	private EventoController controller;
 	
 	//Comprobar que después de hacer el alta el evento existe
 	
@@ -52,17 +56,53 @@ class LucaTicketEventosApplicationTests {
 	
 	
 
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+
 	@Test
 	void testEventoAltaSuNombre() {
 		List<Evento> eventos = repository.findAll();
-		eventos.add(new Evento("3","paco", "ninio","un chaval muy joven",
-				"C:\\Documents",50,800,"Molestar a todos", "Nanoland",
-				"Madrid","Avenida Nanoland", "demasiado pequenio", 2000));
+		Evento e = new Evento("2","paco", "ninio pequenio","un ninio muy pequenio",
+				"C:\\Documents",20,300,"Molestar a la gente", "Nanoland",
+				"Madrid","Avenida Nanolandia", "demasiado pequenio", 2000);
+		eventos.add(e);
+		controller.save(e);
+		List<EventoDTO> evdto = adapter.convertToDTO(eventos);
 		
-		List<EventoDTO> esdto = adapter.convertToDTO(eventos);
-		
-		assertThat(esdto).isEqualTo(eventos);
+		assertThat(evdto).isEqualTo(e.getNombre());
 	}
+	
+	
+	
+	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	
+	@Test
+	void testCantidadEventos() {
+		
+		Evento e = new Evento("3","paqui", "ninia pequenia","una ninia muy pequenia",
+				"C:\\Downloads",30,400,"ser obediente", "PaquiLandia",
+				"A corunia","Plaza Castilla", "demasiado bajita", 3000);
+	
+		long antes = repository.count();
+		controller.save(e);
+		long despues = repository.count();
+		
+		assertEquals(antes+1, despues);
+		
+		
+	}
+	
+	
 	
 	
 
