@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lucaticket.eventos.adapter.EventoAdapter;
+import com.lucaticket.eventos.controller.EventoController;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.repository.EventoRepository;
-
 
 
 @SpringBootTest
@@ -23,6 +23,8 @@ class LucaTicketEventosApplicationTests {
 	private EventoRepository repository;
 	@Autowired
 	private EventoAdapter adapter;
+	@Autowired
+	private EventoController controller;
 	
 	//Comprobar que después de hacer el alta el evento existe
 	
@@ -52,16 +54,24 @@ class LucaTicketEventosApplicationTests {
 	
 	
 
+	/**
+	 * LucaTicketUsuariosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+
 	@Test
-	void testEventoAltaSuNombre() {
+	void testUsuarioAltaSuNombre() {
 		List<Evento> eventos = repository.findAll();
-		eventos.add(new Evento("3","paco", "ninio","un chaval muy joven",
-				"C:\\Documents",50,800,"Molestar a todos", "Nanoland",
-				"Madrid","Avenida Nanoland", "demasiado pequenio", 2000));
+		Evento e = new Evento("2","paco", "ninio pequenio","un ninio muy pequenio",
+				"C:\\Documents",20,300,"Molestar a la gente", "Nanoland",
+				"Madrid","Avenida Nanolandia", "demasiado pequenio", 2000);
+		eventos.add(e);
+		controller.save(e);
+		List<EventoDTO> usdto = adapter.convertToDTO(eventos);
 		
-		List<EventoDTO> esdto = adapter.convertToDTO(eventos);
-		
-		assertThat(esdto).isEqualTo(eventos);
+		assertThat(usdto).isEqualTo(e.getNombre());
 	}
 	
 	
