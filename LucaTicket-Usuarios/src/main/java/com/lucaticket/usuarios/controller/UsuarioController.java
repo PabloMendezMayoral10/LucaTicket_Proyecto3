@@ -2,6 +2,7 @@ package com.lucaticket.usuarios.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,15 +13,17 @@ import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.model.Usuario;
 import com.lucaticket.usuarios.service.UsuarioService;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
+//import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.net.URI;
+import java.util.Collection;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @RestController
-@RequestMapping("/usuario")
-@Tag(name = "Usuario", description = "User API")
+@RequestMapping("/usuarios")
+//@Tag(name = "Usuario", description = "User API")
 /**
  * @author Álvaro Blanco
  * @apiNote Clase UsuarioController que se encarga de controlar las respuestas
@@ -50,4 +53,8 @@ public class UsuarioController {
 	/**
 	 * debo documentar openapi y no tengo la menor idea
 	 */
+	@GetMapping()
+	public ResponseEntity<Collection<UsuarioDTO>> findAll(){
+		return ResponseEntity.ok( service.findAll() );
+	}
 }
