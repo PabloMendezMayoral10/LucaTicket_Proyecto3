@@ -82,7 +82,7 @@ class LucaTicketUsuariosApplicationTests {
 		controller.save(u);
 		List<UsuarioDTO> usdto = adapter.of(usuarios);
 		
-		assertThat(usdto).isEqualTo(u.getNombre());
+		assertThat(u.getNombre()).isEqualTo("Ioan");
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.lucaticket.usuarios.config;
+package com.lucaticket.compras.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import io.swagger.v3.oas.models.ExternalDocumentation;
@@ -26,7 +26,7 @@ public class OpenAPIConfiguration {
 	@Bean
 	public OpenAPI UsuarioOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("UsuariosAPI")
+				.info(new Info().title("API")
 				.description("Documentacion de Usuarios API")		
 				.version("v1.0")
 				.contact(new Contact().name("Proyecto3").

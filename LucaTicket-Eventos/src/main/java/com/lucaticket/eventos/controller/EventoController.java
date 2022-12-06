@@ -15,6 +15,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.service.EventoService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 /*
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,19 +32,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 */
 @RestController
 @RequestMapping("/eventos")
-//@Tag(name = "evento", description = "API de eventos")
+@Tag(name = "Evento", description = "Eventos API")
 
 //OpenApi da problemas, el que se atreva que descomente
 public class EventoController {
 	@Autowired
 	private EventoService service;
 	
-	/*@Operation(summary = "Buscar eventos por ID", description = "Dado un ID, devuelve un objeto Evento transformado en DTO", tags= {"student"})
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Eventos localizados", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
-			@ApiResponse(responseCode = "204", description = "No hay eventos", content = @Content),
-			@ApiResponse(responseCode = "400", description = "Peticion no válida", content = @Content)})*/
+	@Operation(summary = "Listar todos los eventos", description = "Devuelve el resultado de ejecucion de la lista de eventos", tags = {
+	"evento" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Eventos mostrados", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	public ResponseEntity<List<EventoDTO>> findAll(){
 		List<EventoDTO> lista = service.findAll();
@@ -45,11 +52,13 @@ public class EventoController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	/*@Operation(summary = "Buscar estudiantes por ID", description = "Dado un ID, devuelve un objeto Student", tags= {"student"})
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "201", description = "Evento Creado", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
-			@ApiResponse(responseCode = "400", description = "", content = @Content)})*/
+
+	@Operation(summary = "Insertar un nuevo evento", description = "Inserta y devuelve el evento que se ha añadido previamente", tags = {
+	"evento" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Insertar evento", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@PostMapping("/")
 	public EventoDTO save(@RequestBody Evento evento ) {
 		EventoDTO respuesta = service.save(evento);
