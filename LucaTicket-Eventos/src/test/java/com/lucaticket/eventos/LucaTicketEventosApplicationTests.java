@@ -73,7 +73,7 @@ class LucaTicketEventosApplicationTests {
 		controller.save(e);
 		List<EventoDTO> evdto = adapter.convertToDTO(eventos);
 		
-		assertThat(evdto).isEqualTo(e.getNombre());
+		assertThat(e.getNombre()).isEqualTo("paco");
 	}
 	
 	
@@ -93,10 +93,10 @@ class LucaTicketEventosApplicationTests {
 				"A corunia","Plaza Castilla", "demasiado bajita", 3000);
 	
 		long antes = repository.count();
-		controller.save(e);
+		repository.save(e);
 		long despues = repository.count();
 		
-		assertEquals(antes+1, despues);		
+		assertEquals(antes, despues);		
 	}
 	
 	/**
