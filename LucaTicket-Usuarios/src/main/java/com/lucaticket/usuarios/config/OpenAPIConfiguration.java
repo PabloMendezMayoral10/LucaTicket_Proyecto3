@@ -1,7 +1,6 @@
 package com.lucaticket.usuarios.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-/*
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -23,7 +22,7 @@ public class OpenAPIConfiguration {
 	 * @return Se encarga de poner la información especifica de la API
 	 * 
 	 */
-/*
+
 	@Bean
 	public OpenAPI UsuarioOpenAPI() {
 		return new OpenAPI()
@@ -38,5 +37,5 @@ public class OpenAPIConfiguration {
 				.url("https://miproyecto.es"));
 						
 	}
-	*/
+
 }
