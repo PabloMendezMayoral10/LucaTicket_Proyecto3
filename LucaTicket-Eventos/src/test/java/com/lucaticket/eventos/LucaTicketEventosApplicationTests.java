@@ -3,7 +3,7 @@ package com.lucaticket.eventos;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Date;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -28,10 +28,10 @@ class LucaTicketEventosApplicationTests {
 	@Autowired
 	private EventoController controller;
 	
-	//Comprobar que después de hacer el alta el evento existe
+	
 	
 	/**
-	 * LucaTicketEventossApplicationTests
+	 * LucaTicketEventosApplicationTests
 	 * @author Ioan y Pablo
 	 * @version 1.0
 	 * 05-12-2022
