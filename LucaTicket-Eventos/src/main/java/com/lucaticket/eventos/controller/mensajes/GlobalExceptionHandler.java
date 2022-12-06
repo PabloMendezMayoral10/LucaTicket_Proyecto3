@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -63,6 +64,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 		return new ResponseEntity<>(customError, headers, status);
 
 	}
+	
+	@Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(
+        HttpMessageNotReadableException ex, HttpHeaders headers,
+        HttpStatus status, WebRequest request) {
+	
+		
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
+		body.put("status", status.value());
+		body.put("error", ex.getLocalizedMessage());
+		body.put("message", "Peticion mal formulada");
+		return new ResponseEntity<>(body, headers, status);
+    }
 
 	
 	@Override
@@ -82,5 +97,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 
 		return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.METHOD_NOT_ALLOWED);
 	}
+	
+	
 	
 }
