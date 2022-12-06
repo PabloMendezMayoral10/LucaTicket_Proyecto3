@@ -88,7 +88,6 @@ class LucaTicketEventosApplicationTests {
 	
 	@Test
 	void testCantidadEventos() {
-		
 		Evento e = new Evento("3","paqui", "ninia pequenia","una ninia muy pequenia",
 				"C:\\Downloads",30,400,"ser obediente", "PaquiLandia",
 				"A corunia","Plaza Castilla", "demasiado bajita", 3000);
@@ -97,13 +96,53 @@ class LucaTicketEventosApplicationTests {
 		controller.save(e);
 		long despues = repository.count();
 		
-		assertEquals(antes+1, despues);
-		
-		
+		assertEquals(antes+1, despues);		
 	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testListaNoVacia() {
+		List<Evento> eventos = repository.findAll();
+		
+		assertThat(eventos).isNotNull();
+	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testEventosListaNoVacia() {
+		List<Evento> eventos = repository.findAll();
+		
+		for(Evento e : eventos) {
+			assertThat(e).isNotNull();
+		}
+	}
 	
+	/**
+	 * LucaTicketEventosApplicationTests
+	 * @author Ioan y Pablo
+	 * @version 1.0
+	 * 06-12-2022
+	 */
+	@Test
+	void testEventoCreadoEsteEnLista() {
+		Evento e = new Evento();
+		controller.save(e);
+		List<Evento> eventos = repository.findAll();
+		List<EventoDTO> esDto = adapter.convertToDTO(eventos);
+		EventoDTO eventdto = adapter.convertToDTO(e);
+		
+		assertThat(esDto).contains(eventdto);
+	}
 	
 
 }
