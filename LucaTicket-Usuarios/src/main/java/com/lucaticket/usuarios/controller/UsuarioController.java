@@ -18,6 +18,7 @@ import com.lucaticket.usuarios.service.UsuarioService;
 import java.net.URI;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,11 +51,12 @@ public class UsuarioController {
 	}
 	
 	
-	/**
-	 * debo documentar openapi y no tengo la menor idea
-	 */
 	@GetMapping()
-	public ResponseEntity<Collection<UsuarioDTO>> findAll(){
-		return ResponseEntity.ok( service.findAll() );
+	public List<UsuarioDTO> findAll(){
+		List<UsuarioDTO> lista = service.findAll();
+		Optional<List<UsuarioDTO>> optLista = Optional.ofNullable(lista);
+		if(lista.isEmpty()) optLista  = Optional.empty();
+		//if(optLista.isEmpty()) throw new ListaVaciaException();
+		return  optLista.orElseThrow(ListaVaciaException::new) ;
 	}
 }
