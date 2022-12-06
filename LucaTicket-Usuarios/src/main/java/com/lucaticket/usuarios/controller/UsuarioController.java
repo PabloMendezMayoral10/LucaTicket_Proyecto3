@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +71,11 @@ public class UsuarioController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	
 	@GetMapping()
-	public ResponseEntity<Collection<UsuarioDTO>> findAll(){
-		return ResponseEntity.ok( service.findAll() );
+	public List<UsuarioDTO> findAll(){
+		List<UsuarioDTO> lista = service.findAll();
+		Optional<List<UsuarioDTO>> optLista = Optional.ofNullable(lista);
+		if(lista.isEmpty()) optLista  = Optional.empty();
+		//if(optLista.isEmpty()) throw new ListaVaciaException();
+		return  optLista.orElseThrow(ListaVaciaException::new) ;
 	}
 }
