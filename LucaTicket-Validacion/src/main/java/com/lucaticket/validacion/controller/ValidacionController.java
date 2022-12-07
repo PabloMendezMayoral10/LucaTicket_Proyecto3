@@ -61,6 +61,18 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
+	@Operation(summary = "Mensaje pago correcto", description = "Devuelve un mensaje diciendo que el pago se ha realizado correctamente", tags = {
+	"mensajepagocorrecto" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Mensaje pago correcto", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajeOk() {
+		String mensaje = "¡El pago se ha realizado exitosamente!";
+		return mensaje;
+	}
 	
 
 }
