@@ -74,5 +74,18 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
+	@Operation(summary = "Mensaje Pin incorrecto", description = "Devuelve un mensaje diciendo que el pin es incorrecto", tags = {
+	"mensajepinincorrecto" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Mensaje pin incorrecto", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajePinIncorrecto() {
+		String mensaje = "Lo sentimos, el pin que ha marcado es incorrecto, intente otro distinto";
+		return mensaje;
+	}
+	
 
 }
