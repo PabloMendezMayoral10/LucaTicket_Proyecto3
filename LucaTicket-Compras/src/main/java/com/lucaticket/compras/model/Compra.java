@@ -12,6 +12,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * 
+ * @author Álvaro Blanco
+ * @apiNote Estos son los atributos principales para pasar dto
+ *
+ */
 @Entity
 @Table(name = "compra")
 @Setter
@@ -26,5 +32,5 @@ public class Compra {
 	private int id_compra;
 	private int id_usuario;
 	private String id_evento;
-	
+
 }
