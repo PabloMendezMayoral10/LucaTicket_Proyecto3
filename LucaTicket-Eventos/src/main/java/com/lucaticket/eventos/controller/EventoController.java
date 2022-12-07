@@ -33,8 +33,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RestController
 @RequestMapping("/eventos")
 @Tag(name = "Evento", description = "Eventos API")
-
-//OpenApi da problemas, el que se atreva que descomente
 public class EventoController {
 	@Autowired
 	private EventoService service;

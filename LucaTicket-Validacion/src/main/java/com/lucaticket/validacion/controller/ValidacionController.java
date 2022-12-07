@@ -20,9 +20,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/validaciones")
 public class ValidacionController {
-
-	@Autowired
-	private ValidacionService service;
 	
 	@Operation(summary = "Validar los pagos", description = "Devuelve un mensaje diciendo que los pagos se validaron correctamente", tags = {
 	"validarpago" })
@@ -32,14 +29,23 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 
-	public String validarPago(int id_usuario, String id_evento) {
+	public MensajeJSON validarPago() {
+		int metodo = Simuladores.randBetween(1, 5);
 		
-		int tarjetaCredito = Simuladores.randBetween(20, 40) ;
-		int dineroDisponible = Simuladores.randBetween(100, 200) ;
-		
-		
-		
-		
+		switch(metodo) {
+			case 1: 
+				return mensajeOk();
+			case 2:
+				return mensajePinIncorrecto();
+			case 3:
+				return mensajeTarjetaCaducada();
+			case 4:
+				return mensajeFondosInsuficientes();
+			case 5:
+				return mensajeErrorPago();
+			default:
+				return new MensajeJSON(-1, "Se ha liado tanto que no hay ni mensaje de error");
+		}
 	}
 	
 	
@@ -63,7 +69,7 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "200", description = "Mensaje pago correcto", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
+
 	
 	public MensajeJSON mensajeOk() {
 		MensajeJSON mensaje = new MensajeJSON(100, "¡El pago se ha realizado exitosamente!");
@@ -77,8 +83,7 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "200", description = "Error fondo insuficiente", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
-	
+
 	public MensajeJSON mensajeFondosInsuficientes() {
 		MensajeJSON mensaje = new MensajeJSON(51, "Error, actualmente no tiene los fondos necesarios para realizar el pago.");
 		return mensaje;
@@ -90,7 +95,7 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "200", description = "Error tarjeta caducada", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
+
 	
 	public MensajeJSON mensajeTarjetaCaducada() {
 		MensajeJSON mensaje = new MensajeJSON(54, "Error, actualmente su tarjeta de crédito esta caducada.");
@@ -104,7 +109,6 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "200", description = "Mensaje pin incorrecto", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
 	
 	public MensajeJSON mensajePinIncorrecto() {
 		MensajeJSON mensaje = new MensajeJSON(80, "Lo sentimos, el pin que ha marcado es incorrecto, intente otro distinto");
@@ -117,7 +121,7 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "200", description = "Mensaje error pago", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
+
 	
 	public MensajeJSON mensajeErrorPago() {
 		MensajeJSON mensaje = new MensajeJSON(06, "Lo sentimos, ha ocurrido un error al realizar el pago.");
