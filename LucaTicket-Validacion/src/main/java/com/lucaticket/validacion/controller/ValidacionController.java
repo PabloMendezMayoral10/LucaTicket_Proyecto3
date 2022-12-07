@@ -22,16 +22,29 @@ public class ValidacionController {
 	@Autowired
 	private ValidacionService service;
 	
-	@Operation(summary = "Listar todos los eventos", description = "Devuelve el resultado de ejecucion de la lista de eventos", tags = {
-	"evento" })
+	@Operation(summary = "Validar los pagos", description = "Devuelve un mensaje diciendo que los pagos se validaron correctamente", tags = {
+	"validarpago" })
 @ApiResponses(value = {
-	@ApiResponse(responseCode = "200", description = "Eventos mostrados", content = {
+	@ApiResponse(responseCode = "200", description = "Validar pago", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 
 	public String validarPago() {
 		String mensaje = "Hola Validado correctamente";
+		return mensaje;
+	}
+	
+	@Operation(summary = "Error tarjeta caducada", description = "Devuelve un mensaje diciendo que la tarjeta de crédito está caducada", tags = {
+	"errortarjetacaducada" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Error tarjeta caducada", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajeTarjetaCaducada() {
+		String mensaje = "Error, actualmente su tarjeta de crédito esta caducada.";
 		return mensaje;
 	}
 	
