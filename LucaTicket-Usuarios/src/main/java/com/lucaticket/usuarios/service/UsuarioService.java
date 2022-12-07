@@ -11,4 +11,5 @@ import com.lucaticket.usuarios.model.Usuario;
 public interface UsuarioService {
 	public UsuarioDTO save(Usuario u);
 	public List<UsuarioDTO> findAll();
+	public UsuarioDTO findById(int id);
 }
