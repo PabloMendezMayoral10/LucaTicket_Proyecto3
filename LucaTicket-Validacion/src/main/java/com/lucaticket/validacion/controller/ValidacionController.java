@@ -35,6 +35,21 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
+	
+	@Operation(summary = "Mensaje pago correcto", description = "Devuelve un mensaje diciendo que el pago se ha realizado correctamente", tags = {
+	"mensajepagocorrecto" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Mensaje pago correcto", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajeOk() {
+		String mensaje = "¡El pago se ha realizado exitosamente!";
+		return mensaje;
+	}
+	
+	
 	@Operation(summary = "Error tarjeta caducada", description = "Devuelve un mensaje diciendo que la tarjeta de crédito está caducada", tags = {
 	"errortarjetacaducada" })
 @ApiResponses(value = {
@@ -48,6 +63,46 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
+	@Operation(summary = "Error Fondos insuficientes", description = "Devuelve un mensaje diciendo que no hay fondos suficientes", tags = {
+	"errorfondosinsuficientes" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Error fondo insuficiente", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajeFondosInsuficientes() {
+		String mensaje = "Error, actualmente no tiene los fondos necesarios para realizar el pago.";
+		return mensaje;
+	}
+	
+	
+	
+	@Operation(summary = "Mensaje Pin incorrecto", description = "Devuelve un mensaje diciendo que el pin es incorrecto", tags = {
+	"mensajepinincorrecto" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Mensaje pin incorrecto", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajePinIncorrecto() {
+		String mensaje = "Lo sentimos, el pin que ha marcado es incorrecto, intente otro distinto";
+		return mensaje;
+	}
+	
+	@Operation(summary = "Mensaje error pago", description = "Devuelve un mensaje diciendo que ha ocurrido un error al realizar el pago", tags = {
+	"mensajeerrorpago" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Mensaje error pago", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
+	
+	public String mensajeErrorPago() {
+		String mensaje = "Lo sentimos, ha ocurrido un error al realizar el pago.";
+		return mensaje;
+	}
 	
 
 }
