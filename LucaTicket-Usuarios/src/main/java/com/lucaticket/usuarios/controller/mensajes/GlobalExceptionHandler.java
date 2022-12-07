@@ -28,7 +28,7 @@ import com.lucaticket.usuarios.controller.ListaVaciaException;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 	@ExceptionHandler(UsuarioNotFoundException.class)
 	public void springHandleNotFound(HttpServletResponse response) throws IOException {
-		logger.info("------ StudentNotFoundException() ");
+		logger.info("------ UsuarioNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}
 	

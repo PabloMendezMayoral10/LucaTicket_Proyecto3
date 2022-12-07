@@ -21,13 +21,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
-	/*@ExceptionHandler(StudentNotFoundException.class)
+	@ExceptionHandler(EventoNotFoundException.class)
 	public void springHandleNotFound(HttpServletResponse response) throws IOException {
-		logger.info("------ StudentNotFoundException() ");
+		logger.info("------ EventoNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
-	}*/
+	}
 	/*@ExceptionHandler(ConstraintViolationException.class)
 	public void constraintViolationException(HttpServletResponse response) throws IOException {
 		logger.info("------ ConstraintViolationException() ");
