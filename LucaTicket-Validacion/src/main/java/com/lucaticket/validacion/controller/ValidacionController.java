@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lucaticket.validacion.dto.ValidacionDTO;
 import com.lucaticket.validacion.service.ValidacionService;
+import com.lucaticket.validacion.tools.Simuladores;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,8 +33,9 @@ public class ValidacionController {
 
 	public String validarPago(int id_usuario, String id_evento) {
 		
-		
-		
+		int tarjetaCredito = Simuladores.randBetween(20, 40) ;
+		int dineroDisponible = Simuladores.randBetween(100, 200) ;
+
 		
 	}
 	
