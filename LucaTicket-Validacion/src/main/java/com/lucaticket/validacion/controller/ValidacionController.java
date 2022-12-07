@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucaticket.validacion.dto.ValidacionDTO;
+import com.lucaticket.validacion.model.MensajeJSON;
 import com.lucaticket.validacion.service.ValidacionService;
 import com.lucaticket.validacion.tools.Simuladores;
 
@@ -35,7 +36,9 @@ public class ValidacionController {
 		
 		int tarjetaCredito = Simuladores.randBetween(20, 40) ;
 		int dineroDisponible = Simuladores.randBetween(100, 200) ;
-
+		
+		
+		
 		
 	}
 	
@@ -62,8 +65,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	
-	public String mensajeOk() {
-		String mensaje = "¡El pago se ha realizado exitosamente!";
+	public MensajeJSON mensajeOk() {
+		MensajeJSON mensaje = new MensajeJSON(100, "¡El pago se ha realizado exitosamente!");
 		return mensaje;
 	}
 	
@@ -76,8 +79,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	
-	public String mensajeFondosInsuficientes() {
-		String mensaje = "Error, actualmente no tiene los fondos necesarios para realizar el pago.";
+	public MensajeJSON mensajeFondosInsuficientes() {
+		MensajeJSON mensaje = new MensajeJSON(51, "Error, actualmente no tiene los fondos necesarios para realizar el pago.");
 		return mensaje;
 	}
 	
@@ -89,8 +92,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	
-	public String mensajeTarjetaCaducada() {
-		String mensaje = "Error, actualmente su tarjeta de crédito esta caducada.";
+	public MensajeJSON mensajeTarjetaCaducada() {
+		MensajeJSON mensaje = new MensajeJSON(54, "Error, actualmente su tarjeta de crédito esta caducada.");
 		return mensaje;
 	}
 	
@@ -103,8 +106,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	
-	public String mensajePinIncorrecto() {
-		String mensaje = "Lo sentimos, el pin que ha marcado es incorrecto, intente otro distinto";
+	public MensajeJSON mensajePinIncorrecto() {
+		MensajeJSON mensaje = new MensajeJSON(80, "Lo sentimos, el pin que ha marcado es incorrecto, intente otro distinto");
 		return mensaje;
 	}
 	
@@ -116,8 +119,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 	
-	public String mensajeErrorPago() {
-		String mensaje = "Lo sentimos, ha ocurrido un error al realizar el pago.";
+	public MensajeJSON mensajeErrorPago() {
+		MensajeJSON mensaje = new MensajeJSON(06, "Lo sentimos, ha ocurrido un error al realizar el pago.");
 		return mensaje;
 	}
 	
