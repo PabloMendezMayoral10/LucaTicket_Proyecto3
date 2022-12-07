@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,7 +143,16 @@ class LucaTicketUsuariosApplicationTests {
 	 */
 	@Test
 	void testUsuarioNoFieldShouldBeNull() {
+		Optional<Usuario> u = repo.findById(17);
+		Usuario us = u.orElseThrow();
+		boolean noHayNingunNull = true;
 		
+		if(us.getNombre()==null) noHayNingunNull=false;
+		if(us.getApellido()==null) noHayNingunNull=false;
+		if(us.getEmail()==null) noHayNingunNull=false;
+		if(us.getPassword()==null) noHayNingunNull=false;
+		
+		assertThat(noHayNingunNull==true);
 	}
 	
 

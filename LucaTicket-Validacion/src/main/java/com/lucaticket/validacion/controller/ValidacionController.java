@@ -30,10 +30,26 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping()
 
-	public String validarPago() {
-		String mensaje = "Hola Validado correctamente";
+	public String validarPago(int id_usuario, String id_evento) {
+		
+		
+		
+		
+	}
+	
+	
+	/*
+	 * public String validarPago(int id_usuario, String id_evento) {
+		
+		//Poner todos los metodos
+		
+		//Generar datos aleatorios
+		//Condicionales
+		
+		
 		return mensaje;
 	}
+	 */
 	
 	
 	@Operation(summary = "Mensaje pago correcto", description = "Devuelve un mensaje diciendo que el pago se ha realizado correctamente", tags = {
@@ -50,19 +66,6 @@ public class ValidacionController {
 	}
 	
 	
-	@Operation(summary = "Error tarjeta caducada", description = "Devuelve un mensaje diciendo que la tarjeta de crédito está caducada", tags = {
-	"errortarjetacaducada" })
-@ApiResponses(value = {
-	@ApiResponse(responseCode = "200", description = "Error tarjeta caducada", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
-	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping()
-	
-	public String mensajeTarjetaCaducada() {
-		String mensaje = "Error, actualmente su tarjeta de crédito esta caducada.";
-		return mensaje;
-	}
-	
 	@Operation(summary = "Error Fondos insuficientes", description = "Devuelve un mensaje diciendo que no hay fondos suficientes", tags = {
 	"errorfondosinsuficientes" })
 @ApiResponses(value = {
@@ -76,8 +79,20 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
+	@Operation(summary = "Error tarjeta caducada", description = "Devuelve un mensaje diciendo que la tarjeta de crédito está caducada", tags = {
+	"errortarjetacaducada" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Error tarjeta caducada", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping()
 	
+	public String mensajeTarjetaCaducada() {
+		String mensaje = "Error, actualmente su tarjeta de crédito esta caducada.";
+		return mensaje;
+	}
 	
+
 	@Operation(summary = "Mensaje Pin incorrecto", description = "Devuelve un mensaje diciendo que el pin es incorrecto", tags = {
 	"mensajepinincorrecto" })
 @ApiResponses(value = {
