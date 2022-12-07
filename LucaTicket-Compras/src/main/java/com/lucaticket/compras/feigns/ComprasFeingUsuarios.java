@@ -14,6 +14,6 @@ import com.lucaticket.compras.dto.UsuarioDTO;
 @FeignClient(name = "crud-usuarios", url = "http://localhost:9999")
 public interface ComprasFeingUsuarios {
 
-	@GetMapping("/eventos/{id}")
+	@GetMapping("/usuarios/{id}")
 	public UsuarioDTO getUsuarioById(int id);
 }
