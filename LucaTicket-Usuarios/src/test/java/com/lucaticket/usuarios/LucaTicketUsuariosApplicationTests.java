@@ -135,6 +135,15 @@ class LucaTicketUsuariosApplicationTests {
 			assertThat(us).isNotNull();
 	}
 	
+	/**
+	 * @author Martin
+	 * @version 1.0
+	 * @since 07-12-2022
+	 */
+	@Test
+	void testUsuarioNoFieldShouldBeNull() {
+		
+	}
 	
 
 }

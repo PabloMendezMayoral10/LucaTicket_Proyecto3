@@ -31,6 +31,14 @@ public class CompraServiceImp implements CompraService {
 		return cr.findByIdUser(id);
 	}
 
+	@Override
+	public CompraDTO realizarCompra(int idUsu, String idEve) {
+		Compra c = new Compra();
+		c.setId_usuario(idUsu);
+		c.setId_evento(idEve);
+		return ca.convertToDTO(cr.save(c));
+	}
+
 
 
 }

@@ -26,11 +26,12 @@ import com.lucaticket.usuarios.controller.ListaVaciaException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
-	/*@ExceptionHandler(StudentNotFoundException.class)
+	@ExceptionHandler(UsuarioNotFoundException.class)
 	public void springHandleNotFound(HttpServletResponse response) throws IOException {
 		logger.info("------ StudentNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
-	}*/
+	}
+	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@ExceptionHandler(ListaVaciaException.class)
 	public void listaVaciaNoContent(HttpServletResponse response) throws IOException {
@@ -104,6 +105,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
     }
 	
 	
+	
+	protected ResponseEntity<Object> handleNoHandlerFoundException(
+	        HttpMessageNotReadableException ex, HttpHeaders headers,
+	        HttpStatus status, WebRequest request) {
+			Map<String, Object> body = new LinkedHashMap<>();
+			body.put("timestamp", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
+			body.put("status", status.value());
+			body.put("error", ex.getLocalizedMessage());
+			body.put("message", "Usuario no encontrado");
+			
+			return new ResponseEntity<Object>(body, headers, status);
+	    }
 	
 	
 	

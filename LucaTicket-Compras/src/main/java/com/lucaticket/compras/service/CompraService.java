@@ -13,4 +13,7 @@ public interface CompraService {
 	public CompraDTO getEventById(int id);
 	
 	public List<CompraDTO> getUsurioById(int id);
+	
+	public CompraDTO realizarCompra(int idUsu, String idEve);
+
 }
