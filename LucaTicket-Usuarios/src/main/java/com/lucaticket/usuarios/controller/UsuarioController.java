@@ -3,12 +3,14 @@ package com.lucaticket.usuarios.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.lucaticket.usuarios.controller.mensajes.UsuarioNotFoundException;
 import com.lucaticket.usuarios.dto.UsuarioDTO;
 import com.lucaticket.usuarios.model.Usuario;
 import com.lucaticket.usuarios.service.UsuarioService;
@@ -68,7 +70,7 @@ public class UsuarioController {
 @ApiResponses(value = {
 	@ApiResponse(responseCode = "200", description = "Usuarios mostrados", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
-	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@ApiResponse(responseCode = "400", description = "No válido", content = @Content) })
 	
 	@GetMapping()
 	public List<UsuarioDTO> findAll(){
@@ -77,5 +79,20 @@ public class UsuarioController {
 		if(lista.isEmpty()) optLista  = Optional.empty();
 		//if(optLista.isEmpty()) throw new ListaVaciaException();
 		return  optLista.orElseThrow(ListaVaciaException::new) ;
+	}
+	
+	@Operation(summary = "Detalle de usuario buscado por ID", description = "Devuelve el resultado de buscar un usuario", tags = {
+	"usuario" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Usuario mostrado", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido", content = @Content),
+	@ApiResponse(responseCode = "404", description = "No encontrado", content = @Content)})
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findById(@PathVariable int id) throws UsuarioNotFoundException {
+		UsuarioDTO dto = service.findById(id);
+		if(dto==null) throw new UsuarioNotFoundException(id);
+		return ResponseEntity.ok( service.findById(id) );
 	}
 }

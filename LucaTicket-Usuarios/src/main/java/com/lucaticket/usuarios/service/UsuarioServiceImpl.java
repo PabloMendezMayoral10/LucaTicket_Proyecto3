@@ -33,4 +33,18 @@ public class UsuarioServiceImpl implements UsuarioService{
 		UsuarioAdapter ua = new UsuarioAdapter();
 		return ua.of(ur.findAll());
 	}
+	
+	/**
+	 * @author Martin
+	 * @param El ID del usuario a buscar
+	 * @return El usuario en concreto, o null si no existe
+	 * 02-12-2022
+	 */
+	@Override
+	public UsuarioDTO findById(int id) {
+		UsuarioAdapter ua = new UsuarioAdapter();
+		Usuario u = ur.findById(id).orElse(null);
+		if(u==null) return null;
+		return ua.of(u);
+	}
 }
