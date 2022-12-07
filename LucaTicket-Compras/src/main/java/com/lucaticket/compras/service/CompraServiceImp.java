@@ -7,7 +7,7 @@ import com.lucaticket.compras.dto.CompraDTO;
 import com.lucaticket.compras.model.Compra;
 import com.lucaticket.compras.repository.CompraRepository;
 
-public class CompraServiceImpl implements CompraService {
+public class CompraServiceImp implements CompraService {
 	@Autowired
 	private CompraRepository cr;
 
