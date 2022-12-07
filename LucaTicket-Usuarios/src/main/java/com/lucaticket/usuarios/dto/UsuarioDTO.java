@@ -1,6 +1,5 @@
 package com.lucaticket.usuarios.dto;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
