@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.lucaticket.compras.dto.CompraDTO;
 import com.lucaticket.compras.model.Compra;
 
@@ -13,6 +15,7 @@ import com.lucaticket.compras.model.Compra;
  * @since 06-12-2022
  * Clase que transforma Compra en su version DTO
  */
+@Component
 public class CompraAdapter {
 	
 	/**

@@ -52,13 +52,7 @@ public class CompraController {
 	@PostMapping("/{idUsu}/comprar")
 	public CompraDTO realizarCompra(@PathVariable int idUsu, @RequestParam String idEve){
 		CompraDTO compra=null;
-		try {
-			compra = cs.realizarCompra(idUsu, idEve);
-		}catch(EventoNotFoundException ex) {
-			//404
-		}catch(UsuarioNotFoundException ux) {
-			//404
-		}
+		compra = cs.realizarCompra(idUsu, idEve);
 		return compra;
 	}
 

@@ -1,6 +1,7 @@
 package com.lucaticket.compras.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lucaticket.compras.adapter.CompraAdapter;
 import com.lucaticket.compras.controller.EventoNotFoundException;
@@ -19,7 +20,7 @@ import com.lucaticket.compras.repository.CompraRepository;
  * @apiNote 
  *
  */
-
+@Service
 public class CompraServiceImp implements CompraService {
 	@Autowired
 	private CompraRepository cr;

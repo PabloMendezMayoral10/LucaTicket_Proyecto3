@@ -59,7 +59,7 @@ public class EventoController {
 	@ApiResponse(responseCode = "200", description = "Insertar evento", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@PostMapping("/")
+	@PostMapping
 	public EventoDTO save(@RequestBody Evento evento ) {
 		EventoDTO respuesta = service.save(evento);
 		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(respuesta.getId()).toUri();

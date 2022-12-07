@@ -9,5 +9,4 @@ import com.lucaticket.compras.model.Compra;
 
 public interface CompraRepository extends JpaRepository<Compra, Integer>{
 	
-	List<CompraDTO> findByIdUser(int id);
 }

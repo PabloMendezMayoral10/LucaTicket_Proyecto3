@@ -2,6 +2,7 @@ package com.lucaticket.compras.feigns;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.lucaticket.compras.dto.UsuarioDTO;
 
@@ -15,5 +16,5 @@ import com.lucaticket.compras.dto.UsuarioDTO;
 public interface ComprasFeingUsuarios {
 
 	@GetMapping("/usuarios/{id}")
-	public UsuarioDTO getUsuarioById(int id);
+	public UsuarioDTO getUsuarioById(@PathVariable int id);
 }
