@@ -48,8 +48,6 @@ public class CompraServiceImp implements CompraService {
 		if(evento!=null) c.setId_evento(idEve);
 		else throw new EventoNotFoundException();
 		
-		
-		
 		MensajeJSON mensaje = fValidacion.validar();
 		
 		if(mensaje.getCodigo()!=100) throw new NoValidadoException(mensaje.getMensaje());
