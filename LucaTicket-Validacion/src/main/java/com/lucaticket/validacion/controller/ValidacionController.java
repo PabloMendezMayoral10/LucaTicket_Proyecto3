@@ -48,21 +48,6 @@ public class ValidacionController {
 		}
 	}
 	
-	
-	/*
-	 * public String validarPago(int id_usuario, String id_evento) {
-		
-		//Poner todos los metodos
-		
-		//Generar datos aleatorios
-		//Condicionales
-		
-		
-		return mensaje;
-	}
-	 */
-	
-	
 	@Operation(summary = "Mensaje pago correcto", description = "Devuelve un mensaje diciendo que el pago se ha realizado correctamente", tags = {
 	"mensajepagocorrecto" })
 @ApiResponses(value = {

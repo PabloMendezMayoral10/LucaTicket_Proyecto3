@@ -63,4 +63,15 @@ public class EventoController {
 		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(respuesta.getId()).toUri();
 		return respuesta;
 	}
+
+	@Operation(summary = "Buscar un evento por id", description = "Devuelve un evento por el id solicitado", tags = {
+	"evento" })
+@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Buscar evento por id", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping("/{id}")
+	public EventoDTO findById(String evento) {
+		return service.findById(evento);
+	}
 }
