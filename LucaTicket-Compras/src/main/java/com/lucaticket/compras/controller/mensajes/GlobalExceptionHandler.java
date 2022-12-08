@@ -28,19 +28,23 @@ import com.lucaticket.compras.controller.UsuarioNotFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 	@ExceptionHandler(UsuarioNotFoundException.class)
-	public void springHandleNotFound(HttpServletResponse response) throws IOException {
-		logger.info("------ StudentNotFoundException() ");
+	public void springHandleUsuarioNotFound(HttpServletResponse response) throws IOException {
+		logger.info("------ UsuarioNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}
 	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
+	
 	@ExceptionHandler(EventoNotFoundException.class)
-	public void listaVaciaNoContent(HttpServletResponse response) throws IOException {
-		logger.info("------ ListaVaciaException() ");
+	public void springHandleEventoNotFound(HttpServletResponse response) throws IOException {
+		logger.info("------ EventoNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
 	}
 	
-	
+	@ExceptionHandler(NoValidadoException.class)
+	public void springHandleNoValidado(HttpServletResponse response) throws IOException {
+		logger.info("------ NoValidadoException() ");
+		response.sendError(HttpStatus.FORBIDDEN.value());
+	}
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,

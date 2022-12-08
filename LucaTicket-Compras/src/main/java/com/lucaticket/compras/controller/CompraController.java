@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucaticket.compras.adapter.CompraAdapter;
+import com.lucaticket.compras.controller.mensajes.NoValidadoException;
 import com.lucaticket.compras.dto.CompraDTO;
 import com.lucaticket.compras.model.Compra;
 import com.lucaticket.compras.service.CompraService;
@@ -50,7 +51,7 @@ public class CompraController {
 	})
 
 	@PostMapping("/{idUsu}/comprar")
-	public CompraDTO realizarCompra(@PathVariable int idUsu, @RequestParam String idEve){
+	public CompraDTO realizarCompra(@PathVariable int idUsu, @RequestParam String idEve) throws NoValidadoException{
 		CompraDTO compra=null;
 		compra = cs.realizarCompra(idUsu, idEve);
 		return compra;

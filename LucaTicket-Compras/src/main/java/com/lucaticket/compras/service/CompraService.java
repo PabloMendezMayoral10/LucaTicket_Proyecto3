@@ -2,6 +2,7 @@ package com.lucaticket.compras.service;
 
 import java.util.List;
 
+import com.lucaticket.compras.controller.mensajes.NoValidadoException;
 import com.lucaticket.compras.dto.CompraDTO;
 /**
  * 
@@ -14,6 +15,6 @@ public interface CompraService {
 	
 	//public List<CompraDTO> getUsurioById(int id);
 	
-	public CompraDTO realizarCompra(int idUsu, String idEve);
+	public CompraDTO realizarCompra(int idUsu, String idEve) throws NoValidadoException;
 
 }
