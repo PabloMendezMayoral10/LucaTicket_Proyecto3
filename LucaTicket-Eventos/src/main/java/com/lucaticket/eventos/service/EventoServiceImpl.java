@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lucaticket.eventos.adapter.EventoAdapter;
+import com.lucaticket.eventos.controller.mensajes.EventoNotFoundException;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.repository.EventoRepository;
@@ -42,11 +43,12 @@ public class EventoServiceImpl implements EventoService {
 	 * @return Busca un evento por id
 	 * @author Ioan
 	 * 08-12-2022
+	 * @throws EventoNotFoundException 
 	 */
 	
 	@Override
-	public EventoDTO findById(String evento) {
+	public EventoDTO findById(String evento) throws EventoNotFoundException {
 		
-		return (new EventoAdapter()).convertToDTO(repo.findById(evento).orElseThrow());
+		return (new EventoAdapter()).convertToDTO(repo.findById(evento).orElseThrow(EventoNotFoundException::new));
 	}
 }

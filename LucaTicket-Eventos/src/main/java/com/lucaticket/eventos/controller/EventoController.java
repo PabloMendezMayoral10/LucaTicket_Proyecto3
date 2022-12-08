@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.lucaticket.eventos.controller.mensajes.EventoNotFoundException;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.service.EventoService;
@@ -71,8 +72,9 @@ public class EventoController {
 	@ApiResponse(responseCode = "200", description = "Buscar evento por id", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping("/{id}")
-	public EventoDTO findById(@PathVariable String evento) {
+	@GetMapping("/{evento}")
+	public EventoDTO findById(@PathVariable String evento) throws EventoNotFoundException{
+		
 		return service.findById(evento);
 	}
 }
