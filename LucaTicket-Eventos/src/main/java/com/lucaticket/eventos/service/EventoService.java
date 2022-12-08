@@ -10,5 +10,11 @@ import com.lucaticket.eventos.model.Evento;
 @Service
 public interface EventoService {
 	public EventoDTO save(Evento e);
+	
 	public List<EventoDTO> findAll();
+	
+	public EventoDTO findById(String evento);
+	
+
+
 }

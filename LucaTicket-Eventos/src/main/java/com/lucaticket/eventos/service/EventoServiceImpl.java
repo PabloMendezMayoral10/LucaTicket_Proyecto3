@@ -36,4 +36,17 @@ public class EventoServiceImpl implements EventoService {
 	public List<EventoDTO> findAll(){
 		return (new EventoAdapter()).convertToDTO( repo.findAll() );
 	}
+
+	/**
+	 * findById()
+	 * @return Busca un evento por id
+	 * @author Ioan
+	 * 08-12-2022
+	 */
+	
+	@Override
+	public EventoDTO findById(String evento) {
+		
+		return (new EventoAdapter()).convertToDTO(repo.findById(evento).orElseThrow());
+	}
 }
