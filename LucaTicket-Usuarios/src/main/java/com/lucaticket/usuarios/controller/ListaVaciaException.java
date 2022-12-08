@@ -7,7 +7,7 @@ public class ListaVaciaException extends RuntimeException{
 		super("HHHAAAA");
 	}
 	
-	public ListaVaciaException(Long id) {
+	public ListaVaciaException(int id) {
 		super("HHHaaaa" +id);
 	}
 }
