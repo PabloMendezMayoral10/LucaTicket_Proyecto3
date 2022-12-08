@@ -60,10 +60,10 @@ public class EventoController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@PostMapping
-	public EventoDTO save(@RequestBody Evento evento ) {
-		EventoDTO respuesta = service.save(evento);
-		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(respuesta.getId()).toUri();
-		return respuesta;
+	public ResponseEntity<Object> save(@RequestBody Evento evento ) {
+		EventoDTO resultado = this.service.save(evento);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
+		return ResponseEntity.created(location).build();
 	}
 
 	@Operation(summary = "Buscar un evento por id", description = "Devuelve un evento por el id solicitado", tags = {

@@ -25,7 +25,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 //import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.net.URI;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,16 +52,16 @@ public class UsuarioController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
 	@PostMapping("/guardar")
-	public UsuarioDTO save(@RequestBody Usuario usu) {
-		//	log.info("--- save an user ---");
-		//	UsuarioDTO resultado = this.service.save(usuario);
-		//	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
-		//	return ResponseEntity.created(location).build();
+	public ResponseEntity<Object> save(@RequestBody Usuario usu) {
+			log.info("--- save an user ---");
+			UsuarioDTO resultado = this.service.save(usu);
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
+			return ResponseEntity.created(location).build();
 		
 		// Actualizado pare enviar un mensaje 201:
-		UsuarioDTO res = service.save(usu);
+		//UsuarioDTO res = service.save(usu);
 		
-		return res;
+		//return res;
 	}
 	
 	@Operation(summary = "Listar todos los usuarios", description = "Devuelve el resultado de ejecucion de la lista de usuarios", tags = {

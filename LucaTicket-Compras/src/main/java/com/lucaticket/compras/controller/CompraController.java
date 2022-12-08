@@ -2,16 +2,16 @@ package com.lucaticket.compras.controller;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.lucaticket.compras.adapter.CompraAdapter;
 import com.lucaticket.compras.controller.mensajes.NoValidadoException;
 import com.lucaticket.compras.dto.CompraDTO;
-import com.lucaticket.compras.model.Compra;
 import com.lucaticket.compras.service.CompraService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,8 +21,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import java.net.URI;
+
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/compras")
@@ -36,7 +37,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class CompraController {
-	private static final Logger log = LoggerFactory.getLogger(CompraController.class);
+	//private static final Logger log = LoggerFactory.getLogger(CompraController.class);
 	
 	@Autowired
 	private CompraService cs;
@@ -51,10 +52,11 @@ public class CompraController {
 	})
 
 	@PostMapping("/{idUsu}/comprar")
-	public CompraDTO realizarCompra(@PathVariable int idUsu, @RequestParam String idEve) throws NoValidadoException{
+	public ResponseEntity<Object> realizarCompra(@PathVariable int idUsu, @RequestParam String idEve) throws NoValidadoException{
 		CompraDTO compra=null;
 		compra = cs.realizarCompra(idUsu, idEve);
-		return compra;
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(compra.getId_compra()).toUri();
+		return ResponseEntity.created(location).build();
 	}
 
 }
