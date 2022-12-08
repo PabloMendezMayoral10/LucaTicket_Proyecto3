@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +72,7 @@ public class EventoController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping("/{id}")
-	public EventoDTO findById(String evento) {
+	public EventoDTO findById(@PathVariable String evento) {
 		return service.findById(evento);
 	}
 }

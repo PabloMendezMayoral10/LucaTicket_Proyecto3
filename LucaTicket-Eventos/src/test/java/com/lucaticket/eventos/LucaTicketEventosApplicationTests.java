@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,6 @@ import com.lucaticket.eventos.controller.EventoController;
 import com.lucaticket.eventos.dto.EventoDTO;
 import com.lucaticket.eventos.model.Evento;
 import com.lucaticket.eventos.repository.EventoRepository;
-
-
 
 @SpringBootTest
 class LucaTicketEventosApplicationTests {
@@ -139,5 +138,34 @@ class LucaTicketEventosApplicationTests {
 		assertThat(esDto).contains(eventdto);
 	}
 	
+	/**
+	 * @author Pedro Pusso Muro
+	 * @version 1.0
+	 * @since 08/12/2022
+	 */
+	@Test
+	void testEventoNoFieldShouldBeNull() {
+		Optional<Evento> opt = repository.findById("6390acfee9f99107e838fc37");
+		Evento e = opt.orElseThrow();
+		
+		boolean noHayNingunNull = true;
+		
+		if(e.getId() == null) noHayNingunNull = false;
+		else if (e.getNombre() == null) noHayNingunNull = false;
+		else if (e.getDescripcioncorta() == null) noHayNingunNull = false;
+		else if (e.getDescripcionlarga() == null) noHayNingunNull = false;
+		else if (e.getRutafoto() == null) noHayNingunNull = false;
+		// else if (e.getPreciominimo() == null) noHayNingunNull = false;
+		// else if (e.getPreciomaximo() == null) noHayNingunNull = false;
+		else if (e.getNombrerecinto() == null) noHayNingunNull = false;
+		else if (e.getTiporecinto() == null) noHayNingunNull = false;
+		else if (e.getNormas() == null) noHayNingunNull = false;
+		else if (e.getCiudad() == null) noHayNingunNull = false;
+		else if (e.getDireccion() == null) noHayNingunNull = false;
+		// else if (e.getAforo() == null) noHayNingunNull = false;
+		
+		assertThat(noHayNingunNull);
+		
+	}
 
 }
