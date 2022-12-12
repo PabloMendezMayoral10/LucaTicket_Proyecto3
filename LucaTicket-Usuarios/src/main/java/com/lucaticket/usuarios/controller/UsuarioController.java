@@ -2,6 +2,7 @@ package com.lucaticket.usuarios.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +29,15 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+@Validated
 @RestController
 @RequestMapping("/usuarios")
 @Tag(name = "Usuario", description = "Usuario API")
+
 /**
  * @author Álvaro Blanco
  * @apiNote Clase UsuarioController que se encarga de controlar las respuestas
@@ -52,7 +57,7 @@ public class UsuarioController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
 	@PostMapping("/guardar")
-	public ResponseEntity<Object> save(@RequestBody Usuario usu) {
+	public ResponseEntity<Object> save(@Valid @RequestBody Usuario usu) {
 			log.info("--- save an user ---");
 			UsuarioDTO resultado = this.service.save(usu);
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();

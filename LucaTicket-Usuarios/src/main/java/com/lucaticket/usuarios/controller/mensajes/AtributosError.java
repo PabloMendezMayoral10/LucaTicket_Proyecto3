@@ -37,10 +37,8 @@ public class AtributosError extends DefaultErrorAttributes{
 		} else {
 			errorAttributes.put("timestamp", dateFormat.format((Date) timestamp));
 		}
-
 		errorAttributes.remove("trace");
-
-		errorAttributes.put("jdk", System.getProperty("java.version"));	
+		errorAttributes.put("Grupo", "grupo 2 de Lucatic");
 
 		return errorAttributes;
 	}

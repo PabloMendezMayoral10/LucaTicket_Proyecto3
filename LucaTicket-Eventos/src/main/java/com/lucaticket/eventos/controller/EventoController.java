@@ -3,8 +3,11 @@ package com.lucaticket.eventos.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +36,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 */
 @RestController
+@Validated
 @RequestMapping("/eventos")
 @Tag(name = "Evento", description = "Eventos API")
+
 public class EventoController {
 	@Autowired
 	private EventoService service;
@@ -60,7 +65,7 @@ public class EventoController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@PostMapping
-	public ResponseEntity<Object> save(@RequestBody Evento evento ) {
+	public ResponseEntity<Object> save(@Valid @RequestBody Evento evento ) {
 		EventoDTO resultado = this.service.save(evento);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
 		return ResponseEntity.created(location).build();
@@ -73,7 +78,7 @@ public class EventoController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = EventoDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 	@GetMapping("/{evento}")
-	public EventoDTO findById(@PathVariable String evento) throws EventoNotFoundException{
+	public EventoDTO findById(@Valid @PathVariable String evento) throws EventoNotFoundException{
 		
 		return service.findById(evento);
 	}

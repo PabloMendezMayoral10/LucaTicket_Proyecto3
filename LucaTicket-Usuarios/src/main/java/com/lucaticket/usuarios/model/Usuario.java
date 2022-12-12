@@ -14,7 +14,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+/**
+ * Usuario
+ * @author martin
+ * @since 12-12-2022
+ * @apiNote Entidad Usuario con los valores validados
+ */
 @Entity
 	@Table(name = "usuarios")
 	@Setter
@@ -35,10 +40,10 @@ import lombok.ToString;
 		private String apellido;
 		@NotNull
 		@NotEmpty(message="El usuario debe tener un email")
-		@Email
+		@Email(message="email no valido")
 		private String email;
 		@NotNull
-		@NotEmpty(message="El usuario debe tener un nombre")
+		@NotEmpty(message="El usuario debe tener un password")
 		private String password;
 		//private Date fechaalta; //Es Date de java.sql, no de java.util - Martin
 	}
