@@ -56,13 +56,14 @@ public class UsuarioController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
-	@PostMapping("/guardar")
+	@PostMapping("")
 	public UsuarioDTO save(@Valid @RequestBody Usuario usu) {
-			log.info("--- save an user ---");
-//			UsuarioDTO resultado = this.service.save(usu);
-//			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
-//			return ResponseEntity.created(location).build();
+		log.info("--- save an user ---");
+		//UsuarioDTO resultado = this.service.save(usu);
+		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
+		//return ResponseEntity.created(location).build();
 		
+		// Actualizado pare enviar un mensaje 201:
 		UsuarioDTO res = service.save(usu);
 		
 		return res;

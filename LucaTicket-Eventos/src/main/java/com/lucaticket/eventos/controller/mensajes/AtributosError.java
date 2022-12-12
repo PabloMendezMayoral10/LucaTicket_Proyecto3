@@ -40,7 +40,7 @@ public class AtributosError extends DefaultErrorAttributes{
 
 		errorAttributes.remove("trace");
 
-		errorAttributes.put("jdk", System.getProperty("java.version"));	
+		errorAttributes.put("Grupo", "grupo 2 de Lucatic");	
 
 		return errorAttributes;
 	}
