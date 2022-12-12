@@ -4,7 +4,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
@@ -52,7 +51,7 @@ public class Evento {
 	@Field("rutafoto")
 	private String rutafoto;
 	
-	@NotEmpty(message = "Debe de haber una precio minimo")
+	
 	@NotNull
 	@Field("preciominimo")
 	@Min(value = 100)
@@ -60,7 +59,7 @@ public class Evento {
 	private int preciominimo;
 	
 	
-	@NotEmpty(message = "Debe de haber una precio maximo")
+	
 	@NotNull
 	@Field("preciomaximo")
 	@Max(value = 500)
@@ -92,7 +91,7 @@ public class Evento {
 	@Field("tiporecinto")
 	private String tiporecinto;
 	
-	@NotEmpty(message = "Debe de haber un numero de aforo en el campo")
+	
 	@NotNull
 	@Field("aforo")
 	@Positive
