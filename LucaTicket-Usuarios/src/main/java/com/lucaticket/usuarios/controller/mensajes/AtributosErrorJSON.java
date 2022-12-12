@@ -19,9 +19,6 @@ public class AtributosErrorJSON {
 	private String path;
 
 
-	// Extras
-	private String jdk;
-	private String infoadicional;	
 
 	public AtributosErrorJSON() {
 		super();
@@ -31,7 +28,6 @@ public class AtributosErrorJSON {
 		this.trace = "";
 		this.message = new ArrayList<>();
 		this.path = "";
-		this.jdk = "ND";
 	}
 
 	public AtributosErrorJSON(Date timestamp, int status, String error, String trace, List<String> message, String path,
@@ -44,7 +40,6 @@ public class AtributosErrorJSON {
 		this.trace = trace;
 		this.message = message;
 		this.path = path;
-		this.jdk = jdk;
 	}
 
 	public String getTimestamp() {
@@ -101,33 +96,18 @@ public class AtributosErrorJSON {
 		this.path = path;
 	}
 
-	public String getJdk() {
-		return jdk;
-	}
-
-	public void setJdk(String jdk) {
-		this.jdk = jdk;
-	}
 	
 	
 
 	@Override
 	public String toString() {
 		return "CustomErrorJson [timestamp=" + timestamp + ", status=" + status + ", error=" + error + ", trace="
-				+ trace + ", message=" + message + ", path=" + path + ", jdk=" + jdk + "]";
+				+ trace + ", message=" + message + ", path=" + path +"]";
 	}
 
 	private String changeTimeStamp(Date d) {
 		final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return dateFormat.format(d);
-	}
-
-	public String getInfoadicional() {
-		return infoadicional;
-	}
-
-	public void setInfoadicional(String infoadicional) {
-		this.infoadicional = infoadicional;
 	}
 
 }
