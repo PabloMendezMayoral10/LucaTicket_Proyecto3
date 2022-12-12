@@ -98,10 +98,10 @@ public class ValidacionController {
 		return mensaje;
 	}
 	
-	@Operation(summary = "Mensaje error pago", description = "Devuelve un mensaje diciendo que ha ocurrido un error al realizar el pago", tags = {
-	"mensajeerrorpago" })
+	@Operation(summary = "Mensaje codigo incorrecto", description = "Devuelve un mensaje diciendo que ha ocurrido un error de codigo incorrecto", tags = {
+	"Mensajecodigoincorrecto" })
 @ApiResponses(value = {
-	@ApiResponse(responseCode = "200", description = "Mensaje error pago", content = {
+	@ApiResponse(responseCode = "200", description = "Mensaje codigo incorrecto", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ValidacionDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
