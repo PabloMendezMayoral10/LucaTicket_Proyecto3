@@ -52,11 +52,15 @@ public class CompraController {
 	})
 
 	@PostMapping("/{idUsu}/comprar")
-	public ResponseEntity<Object> realizarCompra(@PathVariable int idUsu, @RequestParam String idEve) throws NoValidadoException{
-		CompraDTO compra=null;
-		compra = cs.realizarCompra(idUsu, idEve);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(compra.getId_compra()).toUri();
-		return ResponseEntity.created(location).build();
+	public CompraDTO realizarCompra(@PathVariable int idUsu, @RequestParam String idEve) throws NoValidadoException{
+		//CompraDTO compra=null;
+		//compra = cs.realizarCompra(idUsu, idEve);
+		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(compra.getId_compra()).toUri();
+		//return ResponseEntity.created(location).build();
+		
+		CompraDTO compra = cs.realizarCompra(idUsu, idEve);
+		
+		return compra;
 	}
 
 }
