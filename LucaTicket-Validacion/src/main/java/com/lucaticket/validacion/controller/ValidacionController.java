@@ -40,7 +40,7 @@ public class ValidacionController {
 			case 4:
 				return mensajeFondosInsuficientes();
 			case 5:
-				return mensajeErrorPago();
+				return mensajeErrorCodigo();
 			default:
 				return new MensajeJSON(-1, "Se ha liado tanto que no hay ni mensaje de error");
 		}
@@ -106,8 +106,8 @@ public class ValidacionController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
 	
-	public MensajeJSON mensajeErrorPago() {
-		MensajeJSON mensaje = new MensajeJSON(06, "Lo sentimos, ha ocurrido un error al realizar el pago.");
+	public MensajeJSON mensajeErrorCodigo() {
+		MensajeJSON mensaje = new MensajeJSON(06, "Error, el codigo de seguridad es incorrecto.");
 		return mensaje;
 	}
 	
