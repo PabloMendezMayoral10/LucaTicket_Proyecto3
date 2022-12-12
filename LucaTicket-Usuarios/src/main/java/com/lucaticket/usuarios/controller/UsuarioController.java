@@ -47,7 +47,7 @@ public class UsuarioController {
 	@Operation(summary = "Insertar un nuevo usuario", description = "Inserta y devuelve el usuario que se ha añadido previamente", tags = {
 	"usuario" })
 @ApiResponses(value = {
-	@ApiResponse(responseCode = "200", description = "Insertar usuario", content = {
+	@ApiResponse(responseCode = "201", description = "Insertar usuario", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
