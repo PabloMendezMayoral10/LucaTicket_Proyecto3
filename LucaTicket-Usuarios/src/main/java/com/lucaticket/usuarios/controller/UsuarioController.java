@@ -52,21 +52,21 @@ public class UsuarioController {
 	@Operation(summary = "Insertar un nuevo usuario", description = "Inserta y devuelve el usuario que se ha añadido previamente", tags = {
 	"usuario" })
 @ApiResponses(value = {
-	@ApiResponse(responseCode = "200", description = "Insertar usuario", content = {
+	@ApiResponse(responseCode = "201", description = "Insertar usuario", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioDTO.class)) }),
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
 
-	@PostMapping("/guardar")
-	public ResponseEntity<Object> save(@Valid @RequestBody Usuario usu) {
-			log.info("--- save an user ---");
-			UsuarioDTO resultado = this.service.save(usu);
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
-			return ResponseEntity.created(location).build();
+	@PostMapping("")
+	public UsuarioDTO save(@Valid @RequestBody Usuario usu) {
+		log.info("--- save an user ---");
+		//UsuarioDTO resultado = this.service.save(usu);
+		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId()).toUri();
+		//return ResponseEntity.created(location).build();
 		
 		// Actualizado pare enviar un mensaje 201:
-		//UsuarioDTO res = service.save(usu);
+		UsuarioDTO res = service.save(usu);
 		
-		//return res;
+		return res;
 	}
 	
 	@Operation(summary = "Listar todos los usuarios", description = "Devuelve el resultado de ejecucion de la lista de usuarios", tags = {
