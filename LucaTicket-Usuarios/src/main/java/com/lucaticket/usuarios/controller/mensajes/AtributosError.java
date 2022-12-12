@@ -37,6 +37,7 @@ public class AtributosError extends DefaultErrorAttributes{
 		} else {
 			errorAttributes.put("timestamp", dateFormat.format((Date) timestamp));
 		}
+		errorAttributes.replace("message", "Problema");
 		errorAttributes.remove("trace");
 		errorAttributes.put("Grupo", "grupo 2 de Lucatic");
 
